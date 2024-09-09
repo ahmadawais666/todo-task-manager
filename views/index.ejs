@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link href="src/output.css" rel="stylesheet" /> -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>File store app</title>
+  </head>
+  <body class="bg-zinc-900">
+    <div class="main w-full h-screen bg-zinc-900 text-white">
+      <div class="box w-full p-3">
+        <form action="/create" method="post">
+          <input
+            class="bg-zinc-800 block m-5 p-6 text-white w-[25vw] h-[3vw] rounded-md"
+            type="text"
+            id="task"
+            placeholder="Enter title"
+            name="title"
+            required
+          />
+          <textarea
+            class="bg-zinc-800 w-[30vw] h-[5vw] rounded-md p-4 mx-5 snap-none overflow-hidden resize-none block"
+            id="text"
+            placeholder="Enter some task"
+            name="details"
+            required
+          ></textarea>
+          <input
+            class="w-[10vw] h-[3vw] m-4 bg-blue-700 cursor-pointer text-white rounded-md"
+            type="submit"
+            value="Create task"
+            placeholder="Submit"
+          />
+        </form>
+      </div>
+      <div class="tasks flex gap-3 flex-wrap resize-y p-10">
+        <% if (files.length > 0) { %> <% files.forEach(function(val) { %>
+        <div
+          class="task bg-zinc-800 w-[28vw] max-w-full h-auto max-h-[8vw] resize overflow-hidden p-3 rounded-md"
+        >
+          <h1 class="text-xl font-bold truncate"><%= val.title %></h1>
+          <p class="truncate"><%= val.details %></p>
+
+          <div class="tags flex items-center justify-between">
+            <a href="/file/<%= val.title %>" class="text-blue-600">Read more</a>
+            <a href="/edit/<%= val.title %>" class="text-zinc-600">Edit</a>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <h2 class="text-zinc-800">No files</h2>
+        <% } %>
+      </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Edit Task</title>
+  </head>
+  <body>
+    <div
+      class="w-full h-screen bg-zinc-800 text-white flex items-center justify-center"
+    >
+      <form action="/edit" method="post" class="bg-gray-900 p-10 rounded-md">
+        <input
+          type="text"
+          class="bg-zinc-800 block mb-5 p-4 text-white w-[25vw] rounded-md"
+          placeholder="Previous name"
+          name="previous"
+          value="<%= filename %>"
+        />
+        <input
+          class="bg-zinc-800 block mb-5 p-4 text-white w-[25vw] rounded-md"
+          type="text"
+          placeholder="Enter new title"
+          name="new"
+        />
+        <button
+          type="submit"
+          class="bg-blue-600 block w-[10vw] p-4 text-white rounded-md"
+        >
+          Update Task
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
